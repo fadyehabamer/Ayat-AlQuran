@@ -27,10 +27,13 @@ const getQuote = async () => {
 
         let randomAya = Math.floor(Math.random() * ayat.verses.length);
 
-        text.innerHTML = ayat.verses[randomAya].text;
-        surahName.innerHTML = `سورة ${ayat.name}`
+        const ayaText = ayat.verses[randomAya].text;
+        const surahLabel = `سورة ${ayat.name}`;
 
-        tweetbtn.href = `https://twitter.com/intent/tweet?text=${text.innerHTML} - ${surahName.innerHTML}`
+        text.textContent = ayaText;
+        surahName.textContent = surahLabel;
+
+        tweetbtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${ayaText} - ${surahLabel}`)}`
     } catch (err) {
         console.error(err);
         text.textContent = 'تعذر تحميل الآية، يرجى التحقق من الاتصال والمحاولة مرة أخرى.';
