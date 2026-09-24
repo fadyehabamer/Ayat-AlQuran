@@ -9,6 +9,7 @@ const text = document.querySelector('.aya')
 const surahName = document.querySelector('.surahName')
 const next = document.querySelector('.next')
 const tweetbtn = document.querySelector('.twitter-share-button')
+const arabicNumber = new Intl.NumberFormat('ar-EG')
 const getQuote = async () => {
     // Chapters are numbered 1..114 (there is no chapter 0).
     let rand = Math.floor(Math.random() * 114) + 1;
@@ -21,8 +22,10 @@ const getQuote = async () => {
 
         let randomAya = Math.floor(Math.random() * ayat.verses.length);
 
-        const ayaText = ayat.verses[randomAya].text;
-        const surahLabel = `سورة ${ayat.name}`;
+        const verse = ayat.verses[randomAya];
+        const ayaText = verse.text;
+        const ayahNumber = verse.id || randomAya + 1;
+        const surahLabel = `سورة ${ayat.name} (${arabicNumber.format(ayat.id || rand)}) - الآية ${arabicNumber.format(ayahNumber)}`;
 
         text.textContent = ayaText;
         surahName.textContent = surahLabel;
