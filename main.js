@@ -1,10 +1,4 @@
 
-var myVar;
-
-function myFunction() {
-  myVar = setTimeout(showPage, 3000);
-}
-
 function showPage() {
   document.getElementById("preloader").style.display = "none";
   document.getElementById("container").style.display = "flex";
@@ -40,6 +34,7 @@ const getQuote = async () => {
         surahName.textContent = '';
     } finally {
         next.disabled = false;
+        showPage();
     }
 };
 
