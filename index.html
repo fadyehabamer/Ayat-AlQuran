@@ -15,10 +15,10 @@
     <title>ايات القرأن</title>
   </head>
   <body onload="myFunction()">
-    <div class="preloader" id="preloader"></div>
+    <div class="preloader" id="preloader" role="status" aria-label="جارٍ التحميل"></div>
     <div class="container" id="container">
       <img src="icon.png" alt="" />
-      <h2 class="aya"></h2>
+      <h2 class="aya" aria-live="polite"></h2>
       <hr />
       <p class="surahName"></p>
       <div class="buttons">
@@ -28,9 +28,9 @@
           data-size="large"
           target="_blank"
           rel="noopener noreferrer"
-          >مشاركه علي تويتر<i class="fab fa-twitter"></i
+          >مشاركه علي تويتر<i class="fab fa-twitter" aria-hidden="true"></i
         ></a>
-        <button class="next">التالي</button>
+        <button type="button" class="next">التالي</button>
       </div>
     </div>
     <script src="main.js"></script>
