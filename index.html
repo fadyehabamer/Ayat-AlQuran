@@ -13,9 +13,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>ايات القرأن</title>
+    <title>آيات القرآن</title>
   </head>
-  <body onload="myFunction()">
+  <body>
     <div class="preloader" id="preloader" role="status" aria-label="جارٍ التحميل"></div>
     <div class="container" id="container">
       <img src="icon.png" alt="" />
@@ -29,10 +29,14 @@
           data-size="large"
           target="_blank"
           rel="noopener noreferrer"
-          >مشاركه علي تويتر<i class="fab fa-twitter" aria-hidden="true"></i
+          >مشاركة على تويتر<i class="fab fa-twitter" aria-hidden="true"></i
         ></a>
+        <button type="button" class="play" disabled>
+          <i class="fas fa-play" aria-hidden="true"></i><span class="play-label">استماع للتلاوة</span>
+        </button>
         <button type="button" class="next">التالي</button>
       </div>
+      <p class="audio-status" role="status"></p>
     </div>
     <script src="main.js"></script>
   </body>
