@@ -16,19 +16,31 @@ const surahName = document.querySelector('.surahName')
 const next = document.querySelector('.next')
 const tweetbtn = document.querySelector('.twitter-share-button')
 const getQuote = async () => {
-    let rand = Math.floor(Math.random() * 114);
+    // Chapters are numbered 1..114 (there is no chapter 0).
+    let rand = Math.floor(Math.random() * 114) + 1;
     let apiLink = `https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/${rand}.json`;
-    const res = await fetch(apiLink);
-    const ayat = await res.json();
-    // console.log(ayat.verses)
+    next.disabled = true;
+    try {
+        const res = await fetch(apiLink);
+        if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
+        const ayat = await res.json();
 
-    let randomAya = Math.floor(Math.random() * ayat.verses.length);
+        let randomAya = Math.floor(Math.random() * ayat.verses.length);
 
+        const ayaText = ayat.verses[randomAya].text;
+        const surahLabel = `سورة ${ayat.name}`;
 
-    text.innerHTML = ayat.verses[randomAya].text;
-    surahName.innerHTML = `سورة ${ayat.name}`
+        text.textContent = ayaText;
+        surahName.textContent = surahLabel;
 
-    tweetbtn.href = `https://twitter.com/intent/tweet?text=${text.innerHTML} - ${surahName.innerHTML}`
+        tweetbtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${ayaText} - ${surahLabel}`)}`
+    } catch (err) {
+        console.error(err);
+        text.textContent = 'تعذر تحميل الآية، يرجى التحقق من الاتصال والمحاولة مرة أخرى.';
+        surahName.textContent = '';
+    } finally {
+        next.disabled = false;
+    }
 };
 
 next.addEventListener('click', getQuote)

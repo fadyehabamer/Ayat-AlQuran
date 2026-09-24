@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="quran.png" type="image/x-icon">
+    <meta name="description" content="آيات القرآن: اعرض آية عشوائية من القرآن الكريم مع اسم السورة وشاركها على تويتر." />
+    <link rel="icon" href="quran.png" type="image/png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -15,22 +16,22 @@
     <title>ايات القرأن</title>
   </head>
   <body onload="myFunction()">
-    <div class="preloader" id="preloader"></div>
+    <div class="preloader" id="preloader" role="status" aria-label="جارٍ التحميل"></div>
     <div class="container" id="container">
       <img src="icon.png" alt="" />
-      <h2 class="aya"></h2>
+      <h2 class="aya" aria-live="polite"></h2>
       <hr />
       <p class="surahName"></p>
       <div class="buttons">
         <a
           class="twitter-share-button"
-          href="https://twitter.com/intent/tweet?text=fady"
+          href="https://twitter.com/intent/tweet"
           data-size="large"
           target="_blank"
           rel="noopener noreferrer"
-          >مشاركه علي تويتر<i class="fab fa-twitter"></i
+          >مشاركه علي تويتر<i class="fab fa-twitter" aria-hidden="true"></i
         ></a>
-        <button class="next">التالي</button>
+        <button type="button" class="next">التالي</button>
       </div>
     </div>
     <script src="main.js"></script>
